@@ -1,76 +1,31 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Stack } from "expo-router";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 
-export default function Index() {
-  return (
-    <SafeAreaView style={styles.container}>
-      {/* Segitiga */}
-      <View style={styles.triangle} />
+SplashScreen.preventAutoHideAsync();
 
-      {/* Bentuk Pil (NIM) */}
-      <View style={styles.pill}>
-        <Text style={styles.pillText}>105841104622</Text>
-      </View>
+export default function RootLayout() {
+  const [loaded, error] = useFonts({
+    "bitcount-medium": require("../../assets/fonts/BitcountGridSingle-Medium.ttf"),
+    "bitcount-variable": require("../../assets/fonts/BitcountGridSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf"),
+    "bitcount-prop-regular": require("../../assets/fonts/BitcountPropDouble-Regular.ttf"),
+    "bitcount-prop-variable": require("../../assets/fonts/BitcountPropDouble-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf"),
+    "bitcount-extrabold": require("../../assets/fonts/BitcountSingle-ExtraBold.ttf"),
+    "bitcount-single-variable": require("../../assets/fonts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf"),
+    "inter-extrabold": require("../../assets/fonts/Inter_24pt-ExtraBold.ttf"),
+    "inter-variable": require("../../assets/fonts/Inter-VariableFont_opsz,wght.ttf"),
+    "opensans-bold": require("../../assets/fonts/OpenSans-Bold.ttf"),
+    "opensans-italic-variable": require("../../assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf"),
+  });
 
-      {/* Persegi Panjang (Nama) */}
-      <View style={styles.nameBox}>
-        <Text style={styles.nameText}>MUH. AKBAR HARUDDIN</Text>
-      </View>
+  useEffect(() => {
+    if (loaded && !error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
 
-      {/* Titik Bulat */}
-      <View style={styles.circle} />
-    </SafeAreaView>
-  );
+  if (!loaded && !error) return null;
+
+  return <Stack />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#000", // hitam
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 20,
-  },
-  triangle: {
-    width: 0,
-    height: 0,
-    borderLeftWidth: 30,
-    borderRightWidth: 30,
-    borderBottomWidth: 60,
-    borderStyle: "solid",
-    backgroundColor: "transparent",
-    borderLeftColor: "transparent",
-    borderRightColor: "transparent",
-    borderBottomColor: "orange",
-  },
-  pill: {
-    backgroundColor: "gray", // biru -> abu abu
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    borderRadius: 50,
-  },
-  pillText: {
-    color: "lightblue", // putih -> biru muda
-    fontSize: 18,
-    textAlign: "center",
-  },
-  nameBox: {
-    backgroundColor: "brown", // hijau -> cokelat
-    width: 220,
-    paddingVertical: 10,
-    alignItems: "center",
-    borderRadius: 10,
-  },
-  nameText: {
-    color: "lightblue", // putih -> biru muda
-    fontWeight: "bold",
-    fontSize: 16,
-    textAlign: "center",
-  },
-  circle: {
-    width: 20,
-    height: 20,
-    backgroundColor: "gray", // biru -> abu abu
-    borderRadius: 10,
-  },
-});

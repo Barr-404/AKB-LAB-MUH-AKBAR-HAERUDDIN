@@ -1,93 +1,80 @@
-import React, { useState } from "react";
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, Text } from "react-native";
 
-const bas69GenerateImagePairs = () => {
-  const baseNIM = "10584110";
-  const suffix = "22";
-  const baseURL = "https://simak.unismuh.ac.id/upload/mahasiswa/";
-  const query = "_.jpg?1751871539";
-  const altURL =
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHVzYzJ1bjJiaGFwcmx6cjduNHk1cjk0djc4bm55czVxczNsMzM4MiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/zkNBtlymM6zX4DndrU/giphy.gif";
-
-  const pairs = [];
-
-  for (let i = 46; i <= 54; i++) {
-    const nim = `${baseNIM}${i}${suffix}`;
-    const main = `${baseURL}${nim}${query}`;
-    const alt = altURL;
-    pairs.push({ main, alt });
-  }
-
-  return pairs.slice(0, 9); // ⬅️ Ambil hanya 9 gambar (3x3)
-};
-
-const bas69ImagePairs = bas69GenerateImagePairs();
-
-export default function Bas69GambarGrid() {
-  const [bas69States, setBas69States] = useState(
-    bas69ImagePairs.map(() => ({ scale: 1, isAlt: false }))
-  );
-
-  const bas69HandlePress = (index: number) => {
-    setBas69States((prev) =>
-      prev.map((item, i) => {
-        if (i !== index) return item;
-        const newScale = item.scale < 2 ? item.scale * 1.2 : 2;
-        return {
-          scale: newScale,
-          isAlt: !item.isAlt,
-        };
-      })
-    );
-  };
-
+export default function Index() {
   return (
-    <View style={bas69Styles.container}>
-      <ScrollView contentContainerStyle={bas69Styles.grid}>
-        {bas69ImagePairs.map((pair, index) => (
-          <Pressable key={index} onPress={() => bas69HandlePress(index)}>
-            <Image
-              source={{ uri: bas69States[index].isAlt ? pair.alt : pair.main }}
-              style={[
-                bas69Styles.image,
-                {
-                  transform: [{ scale: bas69States[index].scale }],
-                },
-              ]}
-            />
-          </Pressable>
-        ))}
-      </ScrollView>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={[styles.name, styles.primary]}>
+        Alif Ryanto Rahman{"\n"}105841105022
+      </Text>
+
+      <Text style={[styles.name, styles.style1]}>
+        Erika Yanti{"\n"}105841105122
+      </Text>
+
+      <Text style={[styles.name, styles.style2]}>
+        Zulkifli{"\n"}105841105222
+      </Text>
+
+      <Text style={[styles.name, styles.style3]}>
+        Fifiana{"\n"}105841105322
+      </Text>
+
+      <Text style={[styles.name, styles.style4]}>
+        MUH. AKBAR HAERUDDIN{"\n"}105841104622
+      </Text>
+
+      <Text style={[styles.name, styles.style5]}>
+        Agustiana{"\n"}105841105522
+      </Text>
+
+      <Text style={[styles.name, styles.style6]}>
+        Dia Rahmatillah{"\n"}105841105622
+      </Text>
+
+      <Text style={[styles.name, styles.style7]}>
+        Juliani{"\n"}105841105722
+      </Text>
+
+      <Text style={[styles.name, styles.style8]}>
+        Azzah Aulia Syarif{"\n"}105841105822
+      </Text>
+
+      <Text style={[styles.name, styles.style9]}>
+        Syauqiah Mujahida Yahya{"\n"}105841105922
+      </Text>
+    </ScrollView>
   );
 }
 
-const bas69Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#e0f0ff", // 💠 Latar belakang seluruh layar jadi biru muda
+    padding: 20,
+    backgroundColor: "#f0f4f8",
   },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    padding: 10,
-  },
-  image: {
-    width: Dimensions.get("window").width / 3 - 20,
-    height: Dimensions.get("window").width / 3 - 20,
-    margin: 5,
+  name: {
+    fontSize: 20,
+    backgroundColor: "#ffffff",
+    padding: 12,
+    marginVertical: 6,
     borderRadius: 10,
-    resizeMode: "cover",
-    backgroundColor: "#e0f0ff", // 💠 Background loading
-    borderWidth: 3,
-    borderColor: "#ffc107", // 💛 Bingkai kuning
+    elevation: 3, // untuk shadow Android
+    shadowColor: "#000", // untuk shadow iOS
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
+  primary: {
+    fontFamily: "bitcount-medium",
+    color: "#1e40af",
+    fontSize: 24,
+  },
+  style1: { fontFamily: "bitcount-prop-regular" },
+  style2: { fontFamily: "bitcount-extrabold" },
+  style3: { fontFamily: "bitcount-variable" },
+  style4: { fontFamily: "bitcount-prop-variable" },
+  style5: { fontFamily: "bitcount-single-variable" },
+  style6: { fontFamily: "inter-variable" },
+  style7: { fontFamily: "inter-extrabold" },
+  style8: { fontFamily: "opensans-bold" },
+  style9: { fontFamily: "opensans-italic-variable" },
 });
