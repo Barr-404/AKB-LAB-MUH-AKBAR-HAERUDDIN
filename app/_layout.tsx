@@ -7,22 +7,28 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Beranda",
-          tabBarIcon: (props) => <Feather name="home" {...props} />,
+          title: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="home" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="about"
         options={{
-          title: "Tentang",
-          tabBarIcon: (props) => <Feather name="info" {...props} />,
+          title: "About",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="info" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="profil"
         options={{
-          title: "Profil",
-          tabBarIcon: (props) => <Feather name="user" {...props} />,
+          title: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>
