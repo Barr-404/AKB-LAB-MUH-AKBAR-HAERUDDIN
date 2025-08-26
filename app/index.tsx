@@ -1,15 +1,9 @@
 import { Text, View, Image, ScrollView, StyleSheet } from "react-native";
-import * as Animatable from 'react-native-animatable';
 
 export default function TabIndex() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Animatable.View 
-        animation="zoomInUp" 
-        delay={200} 
-        duration={800}
-        style={styles.card}
-      >
+      <View style={styles.card}>
         <Image 
           source={{ uri: 'https://news.unismuh.ac.id/wp-content/uploads/2023/04/51231776_108783916909288_5111860601001345024_n.jpg' }} 
           style={styles.image}
@@ -25,7 +19,7 @@ export default function TabIndex() {
           {'\n\n'}
           Unismuh juga aktif menjalin kerja sama internasional serta meraih prestasi nasional, seperti dosen terbaik versi SINTA dan kampus penerima program KMMI dari Kemendikbud. Pendaftaran mahasiswa baru dibuka setiap tahun dengan berbagai jalur termasuk CBT dan nilai rapor, serta tersedia beasiswa unggulan seperti Bibit Unggul Persyarikatan.
         </Text>
-      </Animatable.View>
+      </View>
     </ScrollView>
   );
 }
@@ -33,41 +27,46 @@ export default function TabIndex() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#e0f7fa',
+    backgroundColor: '#fff8e1',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
   },
   card: {
-    backgroundColor: '#fce4ec',
-    borderRadius: 20,
-    padding: 22,
+    backgroundColor: '#e3f2fd',
+    borderRadius: 24,
+    padding: 26,
     alignItems: 'center',
-    elevation: 6,
-    shadowColor: '#5e60ce',
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 5 },
-    shadowRadius: 10,
+    elevation: 8,
+    shadowColor: '#1976d2',
+    shadowOpacity: 0.28,
+    shadowOffset: { width: 0, height: 7 },
+    shadowRadius: 14,
     width: '100%',
-    maxWidth: 380,
+    maxWidth: 400,
   },
   image: {
     width: '100%',
-    height: 190,
-    borderRadius: 14,
-    marginBottom: 18,
+    height: 200,
+    borderRadius: 18,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#1976d2',
   },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#5e60ce',
-    marginBottom: 12,
+    color: '#1976d2',
+    marginBottom: 14,
     textAlign: 'center',
+    fontFamily: 'sans-serif-medium',
+    letterSpacing: 1,
   },
   description: {
-    fontSize: 15,
-    color: '#3a3a3c',
+    fontSize: 16,
+    color: '#37474f',
     textAlign: 'justify',
-    lineHeight: 24,
+    lineHeight: 26,
+    fontFamily: 'serif',
   },
 });
